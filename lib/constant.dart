@@ -6,6 +6,10 @@ const int kInactiveBoxColor = 0xFF111328;
 const int kBottomBoxColor = 0xFFEB1555;
 
 const kStyling = TextStyle(
-fontSize: 18.0,
-color: Color(0xFF8D8E98),
+  fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+);
+const kNumberStyling = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.w900,
 );

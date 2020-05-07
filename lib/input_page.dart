@@ -30,6 +30,7 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
@@ -66,13 +67,50 @@ class _InputPageState extends State<InputPage> {
               colour: Color(kActiveBoxColor),
               cardChild: Column(
                 children: <Widget>[
-                  Text("HEIGHT",style: kStyling,),
-                  Row(
-                      children: <Widget>[
-                        Text("$height",style: TextStyle(fontSize: 50.0,fontWeight: FontWeight.bold),),
-                        Text("CM",style: kStyling,)
-                      ]
+                  Text(
+                    "HEIGHT",
+                    style: kStyling,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        "$height",
+                        style: kNumberStyling,
+                      ),
+                      Text(
+                        "CM",
+                        style: kStyling,
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: Color(0xFF8D8E98),
+                      thumbColor: Color(kBottomBoxColor),
+                      thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 15.0,
+                      ),
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 30.0,
+                      ),
+                      overlayColor: Color(0x29EB1555),
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      divisions: 1,
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value.toInt();
+                        });
+                      },
+                      min: 150.0,
+                      max: 200.0,
+                    ),
+                  )
                 ],
               ),
             ),

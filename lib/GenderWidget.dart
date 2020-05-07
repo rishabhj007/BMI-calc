@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator/constant.dart';
 
 class GenderSelector extends StatelessWidget {
+  GenderSelector({@required this.widgetIcon, @required this.gender});
 
-  GenderSelector({@required this.widgetIcon,@required this.gender});
   final widgetIcon;
   final gender;
+
   @override
   Widget build(BuildContext context) {
     return Column(
