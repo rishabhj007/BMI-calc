@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/GenderWidget.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/constant.dart';
-import 'customButton.dart';
+import 'package:bmi_calculator/customButton.dart';
 
 enum Gender {
   Male,
@@ -195,6 +195,10 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
+            child: Text(
+              "Calculate",
+              textAlign: TextAlign.center,
+            ),
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
             height: kBottomBoxHeight,
