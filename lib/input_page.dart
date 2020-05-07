@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/GenderWidget.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/constant.dart';
+import 'customButton.dart';
 
 enum Gender {
   Male,
@@ -11,6 +12,8 @@ enum Gender {
 }
 
 int height;
+int weight;
+int age;
 
 class InputPage extends StatefulWidget {
   @override
@@ -120,9 +123,73 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 ReusableCard(
                   colour: Color(kActiveBoxColor),
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "WEIGHT",
+                        style: kStyling,
+                      ),
+                      Text(
+                        weight.toString(),
+                        style: kNumberStyling,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          CustomButton(
+                              icon: FontAwesomeIcons.minus,
+                              change: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              }),
+                          CustomButton(
+                              icon: FontAwesomeIcons.plus,
+                              change: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              }),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 ReusableCard(
                   colour: Color(kActiveBoxColor),
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "HEIGHT",
+                        style: kStyling,
+                      ),
+                      Text(
+                        height.toString(),
+                        style: kNumberStyling,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          CustomButton(
+                              icon: FontAwesomeIcons.minus,
+                              change: () {
+                                setState(() {
+                                  height--;
+                                });
+                              }),
+                          CustomButton(
+                              icon: FontAwesomeIcons.plus,
+                              change: () {
+                                setState(() {
+                                  height++;
+                                });
+                              }),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
