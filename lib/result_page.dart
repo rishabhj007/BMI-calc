@@ -1,15 +1,13 @@
-import 'package:bmi_calculator/Calc_Brain.dart';
 import 'package:flutter/material.dart';
-import 'input_page.dart';
 import 'constant.dart';
 import 'reusable_card.dart';
 
 class ResultsPage extends StatelessWidget {
-  final String BMI;
+  final String kBMI;
   final String yourBMI;
   final String advice;
 
-  ResultsPage({this.BMI, this.advice, this.yourBMI});
+  ResultsPage({this.kBMI, this.advice, this.yourBMI});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ class ResultsPage extends StatelessWidget {
                         style: kBMIIndicator,
                       ),
                       Text(
-                        BMI,
+                        kBMI,
                         style: kBMITextStyle,
                       ),
                       Text(

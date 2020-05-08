@@ -211,7 +211,7 @@ class _InputPageState extends State<InputPage> {
                 MaterialPageRoute(
                   builder: (context) {
                     return ResultsPage(
-                      BMI: ob.calculateBMI(),
+                      kBMI: ob.calculateBMI(),
                       yourBMI: ob.getResults(),
                       advice: ob.getInterpretation(),
                     );
