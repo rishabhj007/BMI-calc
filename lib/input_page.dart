@@ -5,15 +5,17 @@ import 'package:bmi_calculator/GenderWidget.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/constant.dart';
 import 'package:bmi_calculator/customButton.dart';
+import 'package:bmi_calculator/result_page.dart';
+import 'package:bmi_calculator/Calc_Brain.dart';
 
 enum Gender {
   Male,
   Female,
 }
 
-int height;
-int weight;
-int age;
+int height = 180;
+int weight = 70;
+int age = 18;
 
 class InputPage extends StatefulWidget {
   @override
@@ -144,6 +146,9 @@ class _InputPageState extends State<InputPage> {
                                   weight--;
                                 });
                               }),
+                          SizedBox(
+                            width: 10.0,
+                          ),
                           CustomButton(
                               icon: FontAwesomeIcons.plus,
                               change: () {
@@ -166,7 +171,7 @@ class _InputPageState extends State<InputPage> {
                         style: kStyling,
                       ),
                       Text(
-                        height.toString(),
+                        age.toString(),
                         style: kNumberStyling,
                       ),
                       Row(
@@ -176,14 +181,17 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.minus,
                               change: () {
                                 setState(() {
-                                  height--;
+                                  age--;
                                 });
                               }),
+                          SizedBox(
+                            width: 10.0,
+                          ),
                           CustomButton(
                               icon: FontAwesomeIcons.plus,
                               change: () {
                                 setState(() {
-                                  height++;
+                                  age++;
                                 });
                               }),
                         ],
@@ -194,16 +202,35 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            child: Text(
-              "Calculate",
-              textAlign: TextAlign.center,
+          GestureDetector(
+            onTap: () {
+              CalcBrain ob = CalcBrain(weight: weight, height: height);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ResultsPage(
+                      BMI: ob.calculateBMI(),
+                      yourBMI: ob.getResults(),
+                      advice: ob.getInterpretation(),
+                    );
+                  },
+                ),
+              );
+            },
+            child: Container(
+              child: Text(
+                "Calculate",
+                textAlign: TextAlign.center,
+                style: kBottomButtonText,
+              ),
+              margin: EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: kBottomBoxHeight,
+              color: Color(kBottomBoxColor),
             ),
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: kBottomBoxHeight,
-            color: Color(kBottomBoxColor),
-          )
+          ),
         ],
       ),
     );
